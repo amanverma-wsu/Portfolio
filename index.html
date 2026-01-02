@@ -147,6 +147,23 @@
             width: 100%;
         }
 
+        .nav-btn-thm {
+            background: linear-gradient(135deg, #1DB954, #212C42);
+            padding: 0.5rem 1rem !important;
+            border-radius: 6px;
+            color: #fff !important;
+            font-weight: 600;
+        }
+
+        .nav-btn-thm:hover {
+            background: linear-gradient(135deg, #1ED760, #2A3A56);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn-thm::after {
+            display: none !important;
+        }
+
         /* Mobile Menu Toggle */
         .menu-toggle {
             display: none;
@@ -996,6 +1013,7 @@
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="https://drive.google.com/file/d/1gQt3Wgr7AXwdgXvoIa1bsL3JqUu1SA2s/view?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="https://tryhackme.com/p/aman.verma755" target="_blank" rel="noopener noreferrer" class="nav-btn-thm">TryHackMe</a></li>
             </ul>
         </div>
     </nav>
@@ -1013,6 +1031,10 @@
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary">View Projects</a>
                 <a href="mailto:aman.verma@wsu.edu" class="btn btn-secondary">Get In Touch</a>
+            </div>
+
+            <div class="tryhackme-badge" style="margin-top: 2rem;">
+                <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=6183373" style="border:none; width:100%; max-width:600px; height:100px;"></iframe>
             </div>
         </div>
     </section>
