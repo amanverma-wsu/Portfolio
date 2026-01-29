@@ -83,6 +83,101 @@
 
         [data-theme="light"] footer {
             background: var(--color-bg);
+            border-top: 1px solid rgba(8, 145, 178, 0.15);
+        }
+
+        [data-theme="light"] .timeline-content {
+            background: var(--color-surface);
+            border: 1px solid rgba(8, 145, 178, 0.15);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="light"] .timeline-content:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 5px 20px rgba(8, 145, 178, 0.15);
+        }
+
+        [data-theme="light"] .filter-btn {
+            border-color: rgba(8, 145, 178, 0.3);
+        }
+
+        [data-theme="light"] .filter-btn:hover,
+        [data-theme="light"] .filter-btn.active {
+            border-color: var(--color-primary);
+            background: rgba(8, 145, 178, 0.1);
+        }
+
+        [data-theme="light"] .filter-btn.active {
+            box-shadow: 0 0 15px rgba(8, 145, 178, 0.2);
+        }
+
+        [data-theme="light"] .form-input,
+        [data-theme="light"] .form-textarea {
+            background: rgba(8, 145, 178, 0.05);
+            border-color: rgba(8, 145, 178, 0.2);
+        }
+
+        [data-theme="light"] .form-input:focus,
+        [data-theme="light"] .form-textarea:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 15px rgba(8, 145, 178, 0.15);
+        }
+
+        [data-theme="light"] .form-input::placeholder,
+        [data-theme="light"] .form-textarea::placeholder {
+            color: #94A3B8;
+        }
+
+        [data-theme="light"] .social-link {
+            background: rgba(8, 145, 178, 0.05);
+            border-color: rgba(8, 145, 178, 0.2);
+        }
+
+        [data-theme="light"] .social-link:hover {
+            background: rgba(8, 145, 178, 0.1);
+            border-color: var(--color-primary);
+        }
+
+        [data-theme="light"] .skill-tag {
+            background: rgba(8, 145, 178, 0.08);
+            border-color: rgba(8, 145, 178, 0.2);
+        }
+
+        [data-theme="light"] .skill-tag:hover {
+            background: rgba(8, 145, 178, 0.15);
+            border-color: var(--color-primary);
+        }
+
+        [data-theme="light"] .btn-primary {
+            box-shadow: 0 0 20px rgba(8, 145, 178, 0.25);
+        }
+
+        [data-theme="light"] .btn-primary:hover {
+            box-shadow: 0 0 35px rgba(8, 145, 178, 0.4);
+        }
+
+        [data-theme="light"] .btn-secondary {
+            border-color: var(--color-primary);
+        }
+
+        [data-theme="light"] .back-to-top {
+            box-shadow: 0 4px 15px rgba(8, 145, 178, 0.3);
+        }
+
+        [data-theme="light"] .back-to-top:hover {
+            box-shadow: 0 6px 20px rgba(8, 145, 178, 0.5);
+        }
+
+        [data-theme="light"] .loader-bar {
+            background: rgba(8, 145, 178, 0.15);
+        }
+
+        [data-theme="light"] .contact {
+            border-top: 1px solid rgba(8, 145, 178, 0.15);
+        }
+
+        [data-theme="light"] .nav-links.active {
+            background: rgba(255, 255, 255, 0.98);
         }
 
         /* Page Loader */
@@ -553,15 +648,20 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Outfit', sans-serif;
             background: var(--color-bg);
             color: var(--color-text);
             overflow-x: hidden;
             line-height: 1.6;
+            transition: background 0.4s ease, color 0.4s ease;
         }
 
-        /* Animated grid background - Disabled for pure black */
+        /* Animated dot pattern background */
         body::before {
             content: '';
             position: fixed;
@@ -569,26 +669,24 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: transparent;
+            background-image: radial-gradient(rgba(0, 245, 255, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
             pointer-events: none;
             z-index: 0;
-            display: none;
         }
 
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        [data-theme="light"] body::before {
+            background-image: radial-gradient(rgba(8, 145, 178, 0.1) 1px, transparent 1px);
         }
 
-        /* Glowing orbs - Disabled for complete black background */
+        /* Glowing orbs - subtle ambient glow */
         .orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0;
+            filter: blur(100px);
+            opacity: 0.15;
             pointer-events: none;
             z-index: 0;
-            display: none;
         }
 
         .orb-1 {
@@ -607,6 +705,10 @@
             bottom: -150px;
             left: -150px;
             animation: float 20s ease-in-out infinite reverse;
+        }
+
+        [data-theme="light"] .orb {
+            opacity: 0.08;
         }
 
         @keyframes float {
@@ -671,8 +773,13 @@
             color: var(--color-primary);
         }
 
-        .nav-links a:hover::after {
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
             width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--color-primary);
         }
 
         .nav-btn-thm {
@@ -1190,6 +1297,14 @@
             transform: translateY(0);
         }
 
+        /* Staggered reveal delays for grids */
+        .reveal.stagger-1 { transition-delay: 0.1s; }
+        .reveal.stagger-2 { transition-delay: 0.2s; }
+        .reveal.stagger-3 { transition-delay: 0.3s; }
+        .reveal.stagger-4 { transition-delay: 0.4s; }
+        .reveal.stagger-5 { transition-delay: 0.5s; }
+        .reveal.stagger-6 { transition-delay: 0.6s; }
+
         /* ============================================
            TABLET RESPONSIVENESS (iPad - 768px to 1024px)
            ============================================ */
@@ -1580,9 +1695,24 @@
                 Passionate about <span class="typing-text" id="typingText"></span><span class="typing-cursor"></span>
             </p>
             
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="26">0</span>
+                    <span class="stat-label">NCL National Rank</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="4">0</span>
+                    <span class="stat-label">Bug Bounties</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" data-target="10">0</span>
+                    <span class="stat-label">Projects Built</span>
+                </div>
+            </div>
+
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="mailto:aman.verma@wsu.edu" class="btn btn-secondary">Get In Touch</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
             </div>
 
             <div class="tryhackme-badge" style="margin-top: 2rem; opacity: 0; animation: fadeInUp 0.8s ease 1.2s forwards;">
@@ -1669,7 +1799,7 @@
             </div>
 
             <div class="skills-grid">
-                <div class="skill-category reveal">
+                <div class="skill-category reveal stagger-1">
                     <h3 class="skill-category-title">Languages</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Python</span>
@@ -1686,7 +1816,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category reveal">
+                <div class="skill-category reveal stagger-2">
                     <h3 class="skill-category-title">Cybersecurity & Pentesting</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Burp Suite</span>
@@ -1702,7 +1832,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category reveal">
+                <div class="skill-category reveal stagger-3">
                     <h3 class="skill-category-title">Security Specializations</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Cryptography</span>
@@ -1716,7 +1846,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category reveal">
+                <div class="skill-category reveal stagger-4">
                     <h3 class="skill-category-title">Development & Frameworks</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">React</span>
@@ -1733,7 +1863,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category reveal">
+                <div class="skill-category reveal stagger-5">
                     <h3 class="skill-category-title">DevOps & Cloud</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">Git</span>
@@ -1748,7 +1878,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category reveal">
+                <div class="skill-category reveal stagger-6">
                     <h3 class="skill-category-title">Tools & Technologies</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">VS Code</span>
@@ -1923,7 +2053,10 @@
         </div>
     </section>
 
-
+    <!-- Footer -->
+    <footer>
+        <p>Built with passion by <a href="https://github.com/amanverma-wsu" target="_blank" rel="noopener noreferrer">Aman Verma</a> &copy; <span id="year"></span></p>
+    </footer>
 
     <script>
         // ===== PAGE LOADER =====
@@ -1933,23 +2066,51 @@
             }, 800);
         });
 
-        // ===== SCROLL PROGRESS INDICATOR =====
-        window.addEventListener('scroll', () => {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            scrollProgress.style.width = progress + '%';
-        });
+        // ===== FOOTER YEAR =====
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // ===== BACK TO TOP BUTTON =====
+        // ===== COMBINED SCROLL HANDLER (performance optimized) =====
+        const scrollProgress = document.getElementById('scrollProgress');
         const backToTop = document.getElementById('backToTop');
+        const sections = document.querySelectorAll('section[id]');
+        const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
 
+        let ticking = false;
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrollTop = document.documentElement.scrollTop;
+                    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+                    // Scroll progress bar
+                    scrollProgress.style.width = (scrollTop / scrollHeight) * 100 + '%';
+
+                    // Back to top visibility
+                    if (scrollTop > 500) {
+                        backToTop.classList.add('visible');
+                    } else {
+                        backToTop.classList.remove('visible');
+                    }
+
+                    // Active nav link highlighting
+                    let current = '';
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop - 120;
+                        if (scrollTop >= sectionTop) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+
+                    navAnchors.forEach(anchor => {
+                        anchor.classList.remove('active');
+                        if (anchor.getAttribute('href') === '#' + current) {
+                            anchor.classList.add('active');
+                        }
+                    });
+
+                    ticking = false;
+                });
+                ticking = true;
             }
         });
 
@@ -1962,7 +2123,6 @@
         const themeIcon = document.getElementById('themeIcon');
         const html = document.documentElement;
 
-        // Check for saved theme preference
         const savedTheme = localStorage.getItem('theme') || 'dark';
         html.setAttribute('data-theme', savedTheme);
         themeIcon.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
@@ -1970,7 +2130,6 @@
         themeToggle.addEventListener('click', () => {
             const currentTheme = html.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
             html.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
@@ -1988,8 +2147,7 @@
                 cursorDot.style.top = e.clientY - 3 + 'px';
             });
 
-            // Add hover effect to interactive elements
-            const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tag, .filter-btn');
+            const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tag, .filter-btn, .form-input, .form-textarea');
             interactiveElements.forEach(el => {
                 el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
                 el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
@@ -2024,19 +2182,56 @@
             let typeSpeed = isDeleting ? 50 : 100;
 
             if (!isDeleting && charIndex === currentPhrase.length) {
-                typeSpeed = 2000; // Pause at end
+                typeSpeed = 2000;
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500; // Pause before typing new phrase
+                typeSpeed = 500;
             }
 
             setTimeout(typeEffect, typeSpeed);
         }
 
-        // Start typing animation after page loads
         setTimeout(typeEffect, 1500);
+
+        // ===== STAT COUNTER ANIMATION =====
+        function animateCounters() {
+            const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                function updateCounter() {
+                    current += increment;
+                    if (current < target) {
+                        stat.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        stat.textContent = target;
+                    }
+                }
+
+                updateCounter();
+            });
+        }
+
+        // Trigger counter when hero stats are visible
+        const statsSection = document.querySelector('.hero-stats');
+        if (statsSection) {
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            statsObserver.observe(statsSection);
+        }
 
         // ===== PROJECT FILTERS =====
         const filterBtns = document.querySelectorAll('.filter-btn');
@@ -2044,7 +2239,6 @@
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
@@ -2076,9 +2270,7 @@
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
                     body: new FormData(contactForm),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
 
                 if (response.ok) {
@@ -2096,7 +2288,6 @@
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send Message';
 
-            // Hide status message after 5 seconds
             setTimeout(() => {
                 formStatus.className = 'form-status';
             }, 5000);
@@ -2111,7 +2302,6 @@
             navLinks.classList.toggle('active');
         });
 
-        // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
@@ -2119,23 +2309,11 @@
             });
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
                 menuToggle.classList.remove('active');
                 navLinks.classList.remove('active');
             }
-        });
-
-        // ===== SMOOTH SCROLLING =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
         });
 
         // ===== REVEAL ON SCROLL =====
