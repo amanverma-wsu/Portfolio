@@ -111,23 +111,6 @@
             box-shadow: 0 0 15px rgba(8, 145, 178, 0.2);
         }
 
-        [data-theme="light"] .form-input,
-        [data-theme="light"] .form-textarea {
-            background: rgba(8, 145, 178, 0.05);
-            border-color: rgba(8, 145, 178, 0.2);
-        }
-
-        [data-theme="light"] .form-input:focus,
-        [data-theme="light"] .form-textarea:focus {
-            border-color: var(--color-primary);
-            box-shadow: 0 0 15px rgba(8, 145, 178, 0.15);
-        }
-
-        [data-theme="light"] .form-input::placeholder,
-        [data-theme="light"] .form-textarea::placeholder {
-            color: #94A3B8;
-        }
-
         [data-theme="light"] .social-link {
             background: rgba(8, 145, 178, 0.05);
             border-color: rgba(8, 145, 178, 0.2);
@@ -308,41 +291,6 @@
             background: rgba(0, 245, 255, 0.1);
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--color-primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.15s ease, border-color 0.15s ease;
-            mix-blend-mode: difference;
-        }
-
-        .cursor-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--color-primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.05s ease;
-        }
-
-        .cursor.hover {
-            transform: scale(1.8);
-            border-color: var(--color-accent);
-        }
-
-        @media (max-width: 768px) {
-            .cursor, .cursor-dot {
-                display: none;
-            }
-        }
-
         /* Typing Animation */
         .typing-text {
             display: inline;
@@ -520,125 +468,47 @@
             }
         }
 
-        /* Contact Form Styles */
-        .contact-form {
-            max-width: 600px;
-            margin: 2rem auto 0;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 1rem;
-            background: rgba(0, 245, 255, 0.05);
-            border: 2px solid rgba(0, 245, 255, 0.2);
-            border-radius: 8px;
-            color: var(--color-text);
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
-        }
-
-        .form-textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .form-btn {
-            width: 100%;
-            padding: 1rem 2rem;
-            background: var(--color-primary);
-            color: var(--color-bg);
-            border: none;
-            border-radius: 8px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .form-btn:hover {
-            box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .form-btn:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-
-        .form-status {
-            text-align: center;
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: 8px;
-            display: none;
-        }
-
-        .form-status.success {
-            display: block;
-            background: rgba(0, 255, 136, 0.1);
-            color: var(--color-success);
-            border: 1px solid var(--color-success);
-        }
-
-        .form-status.error {
-            display: block;
-            background: rgba(255, 0, 110, 0.1);
-            color: var(--color-accent);
-            border: 1px solid var(--color-accent);
-        }
-
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
         .social-link {
-            width: 50px;
-            height: 50px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
             background: rgba(0, 245, 255, 0.05);
             border: 2px solid rgba(0, 245, 255, 0.2);
-            border-radius: 50%;
+            border-radius: 12px;
             color: var(--color-text);
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             text-decoration: none;
             transition: all 0.3s ease;
+            min-width: 100px;
+        }
+
+        .social-link .social-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-dim);
         }
 
         .social-link:hover {
             border-color: var(--color-primary);
             background: rgba(0, 245, 255, 0.1);
             transform: translateY(-3px);
+            color: var(--color-primary);
+        }
+
+        .social-link:hover .social-label {
             color: var(--color-primary);
         }
 
@@ -1646,10 +1516,6 @@
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
-
     <!-- Theme Toggle Button -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
         <span id="themeIcon">☀️</span>
@@ -2008,45 +1874,30 @@
                     <h2 class="section-title">Let's Connect</h2>
                     <p class="section-description" style="margin: 0 auto;">
                         Interested in collaboration, cybersecurity projects, or just want to chat about tech?
-                        Send me a message below or connect on social media.
+                        Feel free to reach out via email or connect on social media.
                     </p>
                 </div>
 
-                <!-- Contact Form -->
-                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xpwzgvkn" method="POST">
-                    <div class="form-group">
-                        <label class="form-label" for="name">Name</label>
-                        <input type="text" class="form-input" id="name" name="name" required placeholder="Your name">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="email">Email</label>
-                        <input type="email" class="form-input" id="email" name="email" required placeholder="your.email@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="subject">Subject</label>
-                        <input type="text" class="form-input" id="subject" name="subject" required placeholder="What's this about?">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="message">Message</label>
-                        <textarea class="form-textarea" id="message" name="message" required placeholder="Your message..."></textarea>
-                    </div>
-                    <button type="submit" class="form-btn" id="submitBtn">Send Message</button>
-                    <div class="form-status" id="formStatus"></div>
-                </form>
+                <!-- Email Contact -->
+                <div style="text-align: center; margin: 2rem 0;">
+                    <a href="mailto:aman.verma@wsu.edu" class="btn btn-primary" style="font-size: 1.1rem;">
+                        📧 aman.verma@wsu.edu
+                    </a>
+                </div>
 
                 <!-- Social Links -->
                 <div class="social-links">
-                    <a href="mailto:aman.verma@wsu.edu" class="social-link" title="Email" aria-label="Email">
-                        <span>📧</span>
-                    </a>
                     <a href="https://www.linkedin.com/in/aman-verma-alpha/" class="social-link" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
                         <span>💼</span>
+                        <span class="social-label">LinkedIn</span>
                     </a>
                     <a href="https://github.com/amanverma-wsu" class="social-link" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
                         <span>🐙</span>
+                        <span class="social-label">GitHub</span>
                     </a>
                     <a href="https://tryhackme.com/p/aman.verma755" class="social-link" target="_blank" rel="noopener noreferrer" title="TryHackMe" aria-label="TryHackMe">
                         <span>🛡️</span>
+                        <span class="social-label">TryHackMe</span>
                     </a>
                 </div>
             </div>
@@ -2134,25 +1985,6 @@
             localStorage.setItem('theme', newTheme);
             themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
         });
-
-        // ===== CUSTOM CURSOR =====
-        if (window.innerWidth > 768) {
-            const cursor = document.getElementById('cursor');
-            const cursorDot = document.getElementById('cursorDot');
-
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX - 10 + 'px';
-                cursor.style.top = e.clientY - 10 + 'px';
-                cursorDot.style.left = e.clientX - 3 + 'px';
-                cursorDot.style.top = e.clientY - 3 + 'px';
-            });
-
-            const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-tag, .filter-btn, .form-input, .form-textarea');
-            interactiveElements.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
-        }
 
         // ===== TYPING ANIMATION =====
         const typingText = document.getElementById('typingText');
@@ -2253,44 +2085,6 @@
                     }
                 });
             });
-        });
-
-        // ===== CONTACT FORM =====
-        const contactForm = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const formStatus = document.getElementById('formStatus');
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: new FormData(contactForm),
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
-                    formStatus.className = 'form-status success';
-                    contactForm.reset();
-                } else {
-                    throw new Error('Form submission failed');
-                }
-            } catch (error) {
-                formStatus.textContent = 'Oops! Something went wrong. Please try again or email me directly.';
-                formStatus.className = 'form-status error';
-            }
-
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
-
-            setTimeout(() => {
-                formStatus.className = 'form-status';
-            }, 5000);
         });
 
         // ===== MOBILE MENU TOGGLE =====
